@@ -35,7 +35,7 @@ public class MayaAnimationRecorder : MonoBehaviour {
 
 
 	public int frameIndexToStartTransform = 1500;
-	bool isTransformStart = false;
+	//bool isTransformStart = false;
 
 	int objNums = 0;
 

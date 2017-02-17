@@ -80,6 +80,7 @@ public class UnityAnimationRecorder : MonoBehaviour {
 		CustomDebug ("Start Recorder");
 		isStart = true;
 		Time.timeScale = timeScaleOnRecord;
+		Debug.Log ("Initial offset is: " + recordObjs [0].localPosition.ToString("F7"));
 	}
 
 
@@ -99,18 +100,11 @@ public class UnityAnimationRecorder : MonoBehaviour {
 	void FixedUpdate () {
 
 		if (isStart) {
-
-			if (frameIndex < recordFrames) {
-				for (int i = 0; i < objRecorders.Length; i++) {
-					objRecorders [i].AddFrame (nowTime);
-				}
-
-				++frameIndex;
-			} else {
-				isStart = false;
-				ExportAnimationClip ();
-				CustomDebug ("Recording Finish, generating .anim file");
+			for (int i = 0; i < objRecorders.Length; i++) {
+				objRecorders [i].AddFrame (nowTime);
 			}
+
+			++frameIndex;
 		}
 	}
 
